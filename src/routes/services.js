@@ -5,6 +5,8 @@ const { accounts, writeJSON} = require('../data');
 
 router.get('/transfer',(req,res) => res.render('transfer'));
 router.post('/transfer',(req,res)=>{
+    console.log("req.body.from: "+req.body.from);
+    console.log("req.body.to: "+req.body.to);
     accounts[req.body.from].balance = accounts[req.body.from].balance - req.body.amount;
     accounts[req.body.to].balance=parseInt(accounts[req.body.to].balance)+parseInt(req.body.amount,10);
     writeJSON();

@@ -21,19 +21,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.urlencoded({ extended: true }));
 
-//mongoose.connect('mongodb://localhost:27017',{useNewUrlParser:true});
-//const db = mongoose.connection;
+
+
+
+
+
+
+
 
 app.get("/", (req, res) => {
-    /*  
-    db.on('error', console.error.bind(console, 'connection error:'));
-    const product = db.product.find({});
-    console.log("product data from mongo db:"+product.product_id);
-    db.once('open', function () {
-        console.log(db.product.find({}));
 
-    });
-   */
     res.render('index', { title: 'Account Summary', accounts })
 }
 );

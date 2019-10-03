@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const { accounts, writeJSON} = require('../data');
+const {mongoose,productSchem,ProductModel} = require('../db/product');
 
 router.get('/transfer',(req,res) => res.render('transfer'));
 router.post('/transfer',(req,res)=>{
@@ -20,5 +21,12 @@ router.post('/payment',(req,res)=>{
     writeJSON();
     res.render('payment',{message: 'Payment Successful',account:accounts.credit});
 });
+
+router.get('/createTermLifeProduct',(req,res)=>{
+    const product= new ProductModel({ id: 'LP002',name:'term 20 life' });
+    product.save();
+    res.render('productSave');
+
+})
 
 module.exports=router;

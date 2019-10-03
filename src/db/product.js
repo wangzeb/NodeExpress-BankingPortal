@@ -1,10 +1,17 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017',{useNewUrlParser:true});
+const url= "mongodb+srv://wangzeb:Weijie0808!@cluster0-un6g7.mongodb.net/life";
 
-const db=mongoose.connection;
-db.on('error',console.error.bind(console,'connection error:'));
-db.once('open',function(){
-   db.collection.find({});
 
+mongoose.connect(url, { useUnifiedTopology: true ,useNewUrlParser:true});
+const conn = mongoose.connection;
+const Schema = mongoose.Schema;
+
+const productSchema = new Schema({
+  id: String,
+  name:String
 });
+
+const ProductModel = mongoose.model('products',productSchema);
+
+module.exports={mongoose,productSchema,ProductModel};
